@@ -10,8 +10,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.yscontact.R;
+import com.example.yscontact.service.ForumService;
 
 public class LoginActivity extends AppCompatActivity{
+
+    public static ForumService forumService;
 
     private EditText userName;
     private EditText userPassword;

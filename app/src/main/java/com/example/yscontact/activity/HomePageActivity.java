@@ -13,13 +13,33 @@ import com.example.yscontact.R;
 import com.example.yscontact.fragment.ForumListFragment;
 import com.example.yscontact.fragment.PublishForumFragment;
 import com.example.yscontact.fragment.UserCenterFragment;
+import com.example.yscontact.model.ForumInfo;
+import com.example.yscontact.model.UserInfo;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 public class HomePageActivity extends AppCompatActivity {
 
     private ForumListFragment forumListFragment;
     private PublishForumFragment publishForumFragment;
     private UserCenterFragment userCenterFragment;
+    static ArrayList<ForumInfo> forumInfoArrayList;
+
+
+    private ArrayList<ForumInfo> getForumInfoArrayList(){
+        ArrayList<ForumInfo> forumInfos = new ArrayList<>();
+            ForumInfo forumInfo = new ForumInfo();
+            UserInfo user = new UserInfo();
+            user.setUserName("吴海董");
+            forumInfo.setTitle("测试");
+            forumInfo.setComments(5);
+            forumInfo.setUserInfo(user);
+
+
+
+        return forumInfos;
+    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener=
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -72,6 +92,8 @@ public class HomePageActivity extends AppCompatActivity {
         publishForumFragment = new PublishForumFragment();
         userCenterFragment = new UserCenterFragment();
 
+
+
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.content,forumListFragment).add(R.id.content,publishForumFragment).
                 add(R.id.content,userCenterFragment);
@@ -79,6 +101,9 @@ public class HomePageActivity extends AppCompatActivity {
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
         showFragment(R.id.navigation_item1);
+
+
+
     }
 
 
