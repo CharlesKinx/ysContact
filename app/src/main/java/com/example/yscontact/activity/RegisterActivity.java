@@ -59,6 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 System.out.println(name);
 
+
                 if(name.equals("")){
                     Toast.makeText(RegisterActivity.this,"用户名不能为空！",Toast.LENGTH_SHORT).show();
                 }
@@ -75,6 +76,8 @@ public class RegisterActivity extends AppCompatActivity {
                 if(!password.equals(password1)){
                     Toast.makeText(RegisterActivity.this,"两次密码不一致！",Toast.LENGTH_SHORT).show();
                 }
+
+
 
             }
         });
