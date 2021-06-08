@@ -57,27 +57,18 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = userPs.getText().toString();
                 String password1 = userPs1.getText().toString();
 
-                System.out.println(name);
-
 
                 if(name.equals("")){
                     Toast.makeText(RegisterActivity.this,"用户名不能为空！",Toast.LENGTH_SHORT).show();
-                }
-                if(phone.equals("")){
+                }else if(phone.equals("")){
                     Toast.makeText(RegisterActivity.this,"手机号不能为空！",Toast.LENGTH_SHORT).show();
-                }
-                if(password.equals("")){
+                }else if(password.equals("")){
                     Toast.makeText(RegisterActivity.this,"密码不能为空！",Toast.LENGTH_SHORT).show();
-                }
-                if(password1.equals("")){
+                }else if(password1.equals("")){
                     Toast.makeText(RegisterActivity.this,"密码不能为空！",Toast.LENGTH_SHORT).show();
-                }
-
-                if(!password.equals(password1)){
+                }else if(!password.equals(password1)){
                     Toast.makeText(RegisterActivity.this,"两次密码不一致！",Toast.LENGTH_SHORT).show();
                 }
-
-
 
             }
         });

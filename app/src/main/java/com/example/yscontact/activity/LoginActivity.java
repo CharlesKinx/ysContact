@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity{
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this,HomePageActivity.class);
+                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(intent);
             }
         });
@@ -51,9 +51,11 @@ public class LoginActivity extends AppCompatActivity{
 
                 if(name.equals("")){
                     Toast.makeText(LoginActivity.this,"用户名不能为空！",Toast.LENGTH_SHORT).show();
-                }
-                if(password.equals("")){
+                }else if(password.equals("")){
                     Toast.makeText(LoginActivity.this,"密码不能为空！",Toast.LENGTH_SHORT).show();
+                }else{
+                    Intent intent = new Intent(LoginActivity.this,HomePageActivity.class);
+                    startActivity(intent);
                 }
 
 
