@@ -2,12 +2,30 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:text="原神论坛交流"
+        android:textSize="40sp"
+        android:textColor="@color/black"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        />
+
+    <View
+        android:layout_marginTop="60dp"
+        android:background="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
 
     <ListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp" />
 
 
 </RelativeLayout>
