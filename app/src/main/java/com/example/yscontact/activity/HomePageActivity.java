@@ -24,20 +24,26 @@ public class HomePageActivity extends AppCompatActivity {
     private ForumListFragment forumListFragment;
     private PublishForumFragment publishForumFragment;
     private UserCenterFragment userCenterFragment;
-    static ArrayList<ForumInfo> forumInfoArrayList;
+    public static ArrayList<ForumInfo> forumInfoArrayList;
 
 
     private ArrayList<ForumInfo> getForumInfoArrayList(){
         ArrayList<ForumInfo> forumInfos = new ArrayList<>();
-            ForumInfo forumInfo = new ForumInfo();
-            UserInfo user = new UserInfo();
-            user.setUserName("吴海董");
-            forumInfo.setTitle("测试");
-            forumInfo.setComments(5);
-            forumInfo.setUserInfo(user);
+        ForumInfo forumInfo = new ForumInfo();
+        UserInfo user = new UserInfo();
 
+        user.setUserName("吴海董");
+        forumInfo.setTitle("测试");
+        forumInfo.setComments(5);
+        forumInfo.setUserInfo(user);
+        forumInfos.add(forumInfo);
 
-
+        forumInfo = new ForumInfo();
+        user.setUserName("刘亦菲");
+        forumInfo.setTitle("我爱吴海董");
+        forumInfo.setComments(999);
+        forumInfo.setUserInfo(user);
+        forumInfos.add(forumInfo);
         return forumInfos;
     }
 
@@ -92,7 +98,7 @@ public class HomePageActivity extends AppCompatActivity {
         publishForumFragment = new PublishForumFragment();
         userCenterFragment = new UserCenterFragment();
 
-
+        forumInfoArrayList = getForumInfoArrayList();
 
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.content,forumListFragment).add(R.id.content,publishForumFragment).
