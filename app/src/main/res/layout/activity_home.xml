@@ -28,7 +28,7 @@
     android:id="@+id/bv"
     app:itemIconTint="#675959"
     app:itemTextColor="@color/black"
-    android:background="#e4e4e4"
+    android:background="#0CEDED"
 
     />
 

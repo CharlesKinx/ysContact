@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal" >
+    android:orientation="horizontal"
+    >
 
 
     <ImageView
@@ -27,12 +28,14 @@
             <TextView
                 android:text="标题："
                 android:textSize="20sp"
+                android:textColor="@color/black"
                 android:gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"/>
             <TextView
                 android:id="@+id/title"
                 android:textSize="20sp"
+                android:textColor="@color/black"
                 android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -49,11 +52,13 @@
 
             <TextView
                 android:text="发帖人："
+                android:textColor="@color/black"
                 android:textSize="15sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
                 android:textSize="15sp"
+                android:textColor="@color/black"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/name"
@@ -62,9 +67,11 @@
             <TextView
                 android:text="评论个数："
                 android:textSize="15sp"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"/>
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/comment_num"

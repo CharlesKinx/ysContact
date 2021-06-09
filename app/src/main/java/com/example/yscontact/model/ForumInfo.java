@@ -9,7 +9,7 @@ public class ForumInfo {
     private String title;
     private Text content;
     private List<CommentsInfo> commentsInfoList;
-    private int comments;
+    private int comments = 0;
 
     public List<CommentsInfo> getCommentsInfoList() {
         return commentsInfoList;
