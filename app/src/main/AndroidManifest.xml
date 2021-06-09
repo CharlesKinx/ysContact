@@ -19,6 +19,8 @@
 
         <activity android:name=".activity.RegisterActivity"></activity>
         <activity android:name=".activity.HomePageActivity"></activity>
+        <activity android:name=".activity.ChangeInfoActivity"></activity>
+        <activity android:name=".activity.MyForumListActivity"></activity>
     </application>
 
 </manifest>

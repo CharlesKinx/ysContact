@@ -1,6 +1,7 @@
 package com.example.yscontact.fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.yscontact.R;
+import com.example.yscontact.activity.ChangeInfoActivity;
+import com.example.yscontact.activity.MyForumListActivity;
 
 public class UserCenterFragment extends Fragment {
 
@@ -37,14 +40,19 @@ public class UserCenterFragment extends Fragment {
         myList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),"点击了我的帖子",Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getActivity(), MyForumListActivity.class);
+                startActivity(intent);
+                //Toast.makeText(getActivity(),"点击了我的帖子",Toast.LENGTH_SHORT).show();
             }
         });
 
         changeInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),"点击了修改信息",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), ChangeInfoActivity.class);
+                startActivity(intent);
+                //Toast.makeText(getActivity(),"点击了修改信息",Toast.LENGTH_SHORT).show();
             }
         });
         return view;
