@@ -2,6 +2,7 @@ package com.example.yscontact.fragment;
 
 import android.app.Fragment;
 import android.app.ListFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.example.yscontact.R;
+import com.example.yscontact.activity.ForumContentActivity;
 import com.example.yscontact.activity.HomePageActivity;
 import com.example.yscontact.model.ForumInfo;
 
@@ -67,6 +69,8 @@ public class ForumListFragment extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         ForumInfo forumInfo= HomePageActivity.forumInfoArrayList.get(position);
-        Toast.makeText(getActivity(),forumInfo.getTitle(),Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getActivity(), ForumContentActivity.class);
+        intent.putExtra("forumInfo",forumInfo);
+        startActivity(intent);
     }
 }

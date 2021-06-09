@@ -2,9 +2,10 @@ package com.example.yscontact.model;
 
 import org.w3c.dom.Text;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ForumInfo {
+public class ForumInfo implements Serializable {
     private int forumID;
     private UserInfo userInfo;
     private String title;
