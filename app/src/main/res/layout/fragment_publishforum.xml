@@ -4,16 +4,94 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/back2"
     >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="这是发布帖子页面"
-        android:layout_gravity="center"
-        android:layout_marginTop="300dp"
-        android:textSize="40sp"
-        />
 
+    <TextView
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        android:layout_gravity="center"
+        android:text="发布帖子"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/title"/>
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:text="标题："
+            android:textSize="25sp"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:hint="请输入标题"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/content"/>
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:text="内容："
+            android:textSize="25sp"
+
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+    <EditText
+        android:hint="请输入内容"
+        android:textSize="25sp"
+        android:maxLines="10"
+        android:gravity="top"
+        android:textColor="@color/black"
+        android:layout_gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:background="#2BCC94"
+        android:text="发  布"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_marginTop="10dp"
+        android:background="#C7DDD6"
+        android:text="返  回"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
