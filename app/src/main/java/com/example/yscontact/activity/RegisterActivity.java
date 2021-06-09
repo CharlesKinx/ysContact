@@ -22,6 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button confirm;
     private Button back;
 
+    private static final int REGISTER_RESULT=2;
     private void initView(){
 
         userName = findViewById(R.id.et_user_name);
@@ -70,6 +71,13 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this,"两次密码不一致！",Toast.LENGTH_SHORT).show();
                 }
 
+                userInfo.setUserName(name);
+                userInfo.setUserPassword(password);
+                userInfo.setUserPhone(phone);
+                Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                intent.putExtra("userInfo",userInfo);
+                setResult(REGISTER_RESULT,intent);
+                finish();
             }
         });
 

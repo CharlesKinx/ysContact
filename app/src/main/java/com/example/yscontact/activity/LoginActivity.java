@@ -7,9 +7,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.yscontact.R;
+import com.example.yscontact.model.UserInfo;
 import com.example.yscontact.service.ForumService;
 
 public class LoginActivity extends AppCompatActivity{
@@ -20,6 +22,12 @@ public class LoginActivity extends AppCompatActivity{
     private EditText userPassword;
     private Button login;
     private Button register;
+
+    public static UserInfo userInfo;
+
+    private static final int REGISTER_REQUEST = 1;
+    private static final int REGISTER_RESULT = 2;
+
 
     /**
      * 初始化组件
@@ -41,7 +49,7 @@ public class LoginActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,REGISTER_REQUEST);
             }
         });
 
@@ -56,9 +64,14 @@ public class LoginActivity extends AppCompatActivity{
                     Toast.makeText(LoginActivity.this,"用户名不能为空！",Toast.LENGTH_SHORT).show();
                 }else if(password.equals("")){
                     Toast.makeText(LoginActivity.this,"密码不能为空！",Toast.LENGTH_SHORT).show();
-                }else{
+                }else if(userInfo == null){
+                    Toast.makeText(LoginActivity.this,"没有该用户信息",Toast.LENGTH_SHORT).show();
+
+                }else if(name.equals(userInfo.getUserName())&&password.equals(userInfo.getUserPassword())){
                     Intent intent = new Intent(LoginActivity.this,HomePageActivity.class);
                     startActivity(intent);
+                }else{
+                    Toast.makeText(LoginActivity.this,"密码不正确！",Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -66,5 +79,17 @@ public class LoginActivity extends AppCompatActivity{
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        switch (requestCode){
+            case REGISTER_REQUEST:
+                if(resultCode == REGISTER_RESULT){
+                    userInfo = (UserInfo)data.getSerializableExtra("userInfo");
+                }
+                break;
+        }
+
+    }
 }

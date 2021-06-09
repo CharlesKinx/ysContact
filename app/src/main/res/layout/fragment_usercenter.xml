@@ -47,6 +47,7 @@
             android:id="@+id/et_person_username"
             android:layout_width="wrap_content"
             android:textSize="20sp"
+            android:gravity="center"
             android:textColor="@color/black"
             android:layout_marginLeft="20dp"
             android:layout_height="match_parent"/>
@@ -81,6 +82,7 @@
             android:id="@+id/et_person_phone"
             android:layout_width="wrap_content"
             android:textSize="20sp"
+            android:gravity="center"
             android:textColor="@color/black"
             android:layout_marginLeft="20dp"
             android:layout_height="match_parent"/>
@@ -153,4 +155,16 @@
         android:layout_marginTop="20dp"
         android:layout_height="1px"/>
 
+
+    <Button
+        android:id="@+id/logout"
+        android:text="退出登录"
+        android:background="#EC5757"
+        android:textSize="20sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+/>
 </LinearLayout>

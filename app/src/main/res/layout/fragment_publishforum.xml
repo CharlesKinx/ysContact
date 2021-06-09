@@ -80,16 +80,10 @@
         android:layout_height="wrap_content"/>
 
     <Button
+        android:id="@+id/btn_publish"
         android:layout_marginTop="20dp"
         android:background="#2BCC94"
         android:text="发  布"
-        android:textSize="20sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:layout_marginTop="10dp"
-        android:background="#C7DDD6"
-        android:text="返  回"
         android:textSize="20sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

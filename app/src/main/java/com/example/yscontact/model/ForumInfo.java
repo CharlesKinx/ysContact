@@ -5,6 +5,7 @@ import org.w3c.dom.Text;
 import java.util.List;
 
 public class ForumInfo {
+    private int forumID;
     private UserInfo userInfo;
     private String title;
     private Text content;
@@ -17,6 +18,14 @@ public class ForumInfo {
 
     public void setCommentsInfoList(List<CommentsInfo> commentsInfoList) {
         this.commentsInfoList = commentsInfoList;
+    }
+
+    public int getForumID() {
+        return forumID;
+    }
+
+    public void setForumID(int forumID) {
+        this.forumID = forumID;
     }
 
     public UserInfo getUserInfo() {

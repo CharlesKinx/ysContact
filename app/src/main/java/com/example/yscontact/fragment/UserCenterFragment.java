@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.yscontact.R;
 import com.example.yscontact.activity.ChangeInfoActivity;
+import com.example.yscontact.activity.LoginActivity;
 import com.example.yscontact.activity.MyForumListActivity;
 
 public class UserCenterFragment extends Fragment {
@@ -23,12 +25,18 @@ public class UserCenterFragment extends Fragment {
     private TextView userPhone;
     private TextView myList;
     private TextView changeInfo;
+    private Button logout;
 
     private void initView(View view){
         userName = view.findViewById(R.id.et_person_username);
         userPhone = view.findViewById(R.id.et_person_phone);
         myList = view.findViewById(R.id.my_list);
         changeInfo =view.findViewById(R.id.change_info);
+        logout = view.findViewById(R.id.logout);
+
+        userName.setText(LoginActivity.userInfo.getUserName());
+        userPhone.setText(LoginActivity.userInfo.getUserPhone());
+
     }
 
     @Nullable
@@ -53,6 +61,14 @@ public class UserCenterFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), ChangeInfoActivity.class);
                 startActivity(intent);
                 //Toast.makeText(getActivity(),"点击了修改信息",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),LoginActivity.class);
+                startActivity(intent);
             }
         });
         return view;
