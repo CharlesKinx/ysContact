@@ -60,4 +60,16 @@ public class ForumInfo {
     public void setComments(int comments) {
         this.comments = comments;
     }
+
+    @Override
+    public String toString() {
+        return "ForumInfo{" +
+                "forumID=" + forumID +
+                ", userInfo=" + userInfo +
+                ", title='" + title + '\'' +
+                ", content=" + content +
+                ", commentsInfoList=" + commentsInfoList +
+                ", comments=" + comments +
+                '}';
+    }
 }

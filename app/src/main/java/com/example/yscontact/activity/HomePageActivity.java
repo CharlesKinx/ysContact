@@ -25,7 +25,6 @@ public class HomePageActivity extends AppCompatActivity {
     private PublishForumFragment publishForumFragment;
     private UserCenterFragment userCenterFragment;
     public static ArrayList<ForumInfo> forumInfoArrayList;
-    public static UserInfo userInfo;
 
     private ArrayList<ForumInfo> getForumInfoArrayList(){
         ArrayList<ForumInfo> forumInfos = new ArrayList<>();
