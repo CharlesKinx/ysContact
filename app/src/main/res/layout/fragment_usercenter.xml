@@ -17,9 +17,6 @@
         android:textColor="@color/black"
         />
 
-
-
-
     <View
 
         android:background="@color/black"
@@ -98,7 +95,7 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
 
@@ -108,21 +105,15 @@
             android:src="@drawable/mylist"
             />
         <TextView
-            android:text="我的帖子:"
+            android:id="@+id/my_list"
+            android:text="我的帖子"
             android:textSize="20sp"
             android:textColor="@color/black"
-            android:gravity="center"
+
             android:layout_marginLeft="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
-        <TextView
-            android:id="@+id/et_person_mylist"
-            android:layout_width="wrap_content"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:layout_marginLeft="20dp"
-            android:layout_height="match_parent"/>
 
     </LinearLayout>
 
@@ -133,8 +124,9 @@
         android:layout_height="1px"/>
 
     <LinearLayout
+
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
 
@@ -145,20 +137,14 @@
             android:src="@drawable/change"
             />
         <TextView
-            android:text="修改个人信息:"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/change_info"
+            android:text="修改个人信息"
             android:textSize="20sp"
             android:textColor="@color/black"
-            android:gravity="center"
             android:layout_marginLeft="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"/>
-
-        <TextView
-            android:id="@+id/et_person_change"
-            android:layout_width="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginLeft="20dp"
-            android:layout_height="match_parent"/>
+            />
 
     </LinearLayout>
     <View
