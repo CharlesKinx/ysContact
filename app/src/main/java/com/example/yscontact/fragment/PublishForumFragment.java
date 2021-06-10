@@ -18,6 +18,9 @@ import com.example.yscontact.activity.HomePageActivity;
 import com.example.yscontact.activity.LoginActivity;
 import com.example.yscontact.model.ForumInfo;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class PublishForumFragment extends Fragment {
 
     private Button publishForum;
@@ -53,6 +56,7 @@ public class PublishForumFragment extends Fragment {
                     forumInfo.setContent(content);
                     forumInfo.setUserInfo(LoginActivity.userInfo);
                     HomePageActivity.forumInfoArrayList.add(forumInfo);
+                    ForumListFragment.adapter.notifyDataSetChanged();
                     Intent intent = new Intent(getActivity(),HomePageActivity.class);
                     startActivity(intent);
                 }

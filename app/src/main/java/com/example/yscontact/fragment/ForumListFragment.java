@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import com.example.yscontact.R;
 import com.example.yscontact.activity.ForumContentActivity;
 import com.example.yscontact.activity.HomePageActivity;
+import com.example.yscontact.adapter.ForumAdapter;
 import com.example.yscontact.model.ForumInfo;
 
 import java.util.ArrayList;
@@ -27,18 +28,10 @@ import java.util.Map;
 public class ForumListFragment extends ListFragment {
 
     private ListView listView;
-    private ArrayList<Map<String,Object>> mapArrayList;
+    public static ArrayList<Map<String,Object>> mapArrayList;
     private ArrayList<ForumInfo> forumInfoArrayList;
+    public static ForumAdapter adapter;
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        String[] names = {"forumTitle","userName","commentNum"};
-        int[] id = {R.id.title,R.id.name,R.id.comment_num};
-        mapArrayList = getDate();
-        SimpleAdapter simpleAdapter = new SimpleAdapter(getActivity(),mapArrayList,R.layout.items,names,id);
-        setListAdapter(simpleAdapter);
-    }
 
 
     private ArrayList<Map<String,Object>> getDate() {
@@ -61,6 +54,8 @@ public class ForumListFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_forumlist, container, false);
         listView = view.findViewById(android.R.id.list);
+        adapter = new ForumAdapter(getActivity());
+        listView.setAdapter(adapter);
         return view;
     }
 

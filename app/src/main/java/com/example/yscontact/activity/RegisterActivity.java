@@ -69,15 +69,17 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this,"密码不能为空！",Toast.LENGTH_SHORT).show();
                 }else if(!password.equals(password1)){
                     Toast.makeText(RegisterActivity.this,"两次密码不一致！",Toast.LENGTH_SHORT).show();
+                }else{
+                    userInfo.setUserName(name);
+                    userInfo.setUserPassword(password);
+                    userInfo.setUserPhone(phone);
+                    Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                    intent.putExtra("userInfo",userInfo);
+                    setResult(REGISTER_RESULT,intent);
+                    finish();
                 }
 
-                userInfo.setUserName(name);
-                userInfo.setUserPassword(password);
-                userInfo.setUserPhone(phone);
-                Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
-                intent.putExtra("userInfo",userInfo);
-                setResult(REGISTER_RESULT,intent);
-                finish();
+
             }
         });
 
