@@ -61,7 +61,6 @@ public class ForumListFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_forumlist, container, false);
         listView = view.findViewById(android.R.id.list);
-
         return view;
     }
 

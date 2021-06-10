@@ -9,7 +9,7 @@ public class ForumInfo implements Serializable {
     private int forumID;
     private UserInfo userInfo;
     private String title;
-    private Text content;
+    private String content;
     private List<CommentsInfo> commentsInfoList;
     private int comments = 0;
 
@@ -46,11 +46,11 @@ public class ForumInfo implements Serializable {
         this.title = title;
     }
 
-    public Text getContent() {
+    public String getContent() {
         return content;
     }
 
-    public void setContent(Text content) {
+    public void setContent(String content) {
         this.content = content;
     }
 

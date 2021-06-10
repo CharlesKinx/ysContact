@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/back"
     >
 
     <TextView
@@ -27,20 +28,21 @@
 
             android:textSize="20sp"
             android:text="作者："
+            android:textColor="@color/black"
             android:layout_marginLeft="20dp"
             android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/forum_user_name"
-
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:layout_gravity="center_vertical"
             android:layout_width="150dp"
             android:layout_height="wrap_content"/>
 
         <TextView
-
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:text="评论数："
             android:layout_marginLeft="20dp"
@@ -49,7 +51,7 @@
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/forum_comment_num"
-
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
