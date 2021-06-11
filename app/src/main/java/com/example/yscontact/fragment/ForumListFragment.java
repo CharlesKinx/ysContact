@@ -50,7 +50,7 @@ public class ForumListFragment extends ListFragment {
         super.onListItemClick(l, v, position, id);
         ForumInfo forumInfo= LoginActivity.forumInfoArrayList.get(position);
         Intent intent = new Intent(getActivity(), ForumContentActivity.class);
-        intent.putExtra("forumInfo",forumInfo);
+        intent.putExtra("forumInfoID",forumInfo.getForumID());
         startActivity(intent);
     }
 }

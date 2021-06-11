@@ -58,9 +58,9 @@ public class LoginActivity extends AppCompatActivity{
 
         forumInfo.setTitle("吴海董最帅！");
         forumInfo.setContent("吴海董最帅！不接受反驳");
-        forumInfo.setComments(555);
         forumInfo.setUserInfo(userInfo);
         forumInfo.setForumID(1);
+        forumInfo.setComments(1);
         commentsInfo.setComment("说得对！");
         commentsInfo.setUser("刘亦菲");
         commentsInfo.setForumID(forumInfo.getForumID());
@@ -73,11 +73,8 @@ public class LoginActivity extends AppCompatActivity{
 
         forumInfo.setTitle("韩康泽爱女装");
         forumInfo.setContent("韩康泽最丑！不接受反驳");
-        forumInfo.setComments(999);
         forumInfo.setForumID(2);
         forumInfo.setUserInfo(userInfo1);
-        commentsInfo.setForumID(forumInfo.getForumID());
-        commentsInfoArrayList.add(commentsInfo);
         arrayList.add(forumInfo);
 
         return arrayList;

@@ -31,7 +31,6 @@ public class ForumContentActivity extends AppCompatActivity {
     private Button publishComment;
 
     private ForumInfo forumInfo;
-    private CommentsInfo commentsInfo;
     private ArrayList<CommentsInfo> commentsInfoArrayList;
     private ForumCommentAdapter forumCommentAdapter;
 
@@ -44,7 +43,7 @@ public class ForumContentActivity extends AppCompatActivity {
 
         editComment = findViewById(R.id.et_comment);
         publishComment = findViewById(R.id.btn_publish_comment);
-        commentsInfo = new CommentsInfo();
+
 
     }
 
@@ -61,14 +60,33 @@ public class ForumContentActivity extends AppCompatActivity {
 
     }
 
+    private ForumInfo getForumInfo(int id){
+        for(int i=0;i<LoginActivity.forumInfoArrayList.size();i++){
+            if(LoginActivity.forumInfoArrayList.get(i).getForumID() == id){
+                return LoginActivity.forumInfoArrayList.get(i);
+            }
+        }
+        return null;
+    }
+
+    private void addCommentNum(ForumInfo forumInfo){
+        for(int i =0;i<LoginActivity.forumInfoArrayList.size();i++){
+            if(LoginActivity.forumInfoArrayList.get(i).getForumID()==forumInfo.getForumID()){
+                LoginActivity.forumInfoArrayList.get(i).setForumID(LoginActivity.forumInfoArrayList.get(i).getComments()+1);
+            }
+        }
+
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forumcontent);
         Intent intent = getIntent();
-        forumInfo = (ForumInfo)intent.getSerializableExtra("forumInfo");
-        initView(forumInfo);
+        int forumInfoID =(int)intent.getSerializableExtra("forumInfoID");
+        ForumInfo forumInfo = getForumInfo(forumInfoID);
 
+        initView(forumInfo);
         title.setText(forumInfo.getTitle());
         userName.setText(forumInfo.getUserInfo().getUserName());
         commentsNum.setText(String.valueOf(forumInfo.getComments()));
@@ -85,10 +103,15 @@ public class ForumContentActivity extends AppCompatActivity {
                 if (comment.equals("")){
                     Toast.makeText(ForumContentActivity.this,"评论内容不能为空！",Toast.LENGTH_SHORT).show();
                 }else{
+                    CommentsInfo commentsInfo = new CommentsInfo();
                     commentsInfo.setComment(comment);
                     commentsInfo.setUser(LoginActivity.userInfo.getUserName());
                     commentsInfo.setForumID(forumInfo.getForumID());
                     LoginActivity.commentsInfoArrayList.add(commentsInfo);
+                    editComment.setText("");
+                    forumInfo.setComments(forumInfo.getComments()+1);
+                    commentsNum.setText(String.valueOf(forumInfo.getComments()));
+
                     commentsInfoArrayList.add(commentsInfo);
                     forumCommentAdapter.notifyDataSetChanged();
                 }
