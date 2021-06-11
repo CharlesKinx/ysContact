@@ -96,6 +96,7 @@ public class HomePageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         initView();
+
         BottomNavigationView navigationView = findViewById(R.id.bv);
         navigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
     }

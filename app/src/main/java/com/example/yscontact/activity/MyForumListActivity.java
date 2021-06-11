@@ -14,3 +14,4 @@ public class MyForumListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_myforumlist);
     }
 }
+   
