@@ -14,13 +14,13 @@ import com.example.yscontact.R;
 import com.example.yscontact.model.CommentsInfo;
 import com.example.yscontact.model.ForumInfo;
 import com.example.yscontact.model.UserInfo;
-import com.example.yscontact.service.ForumService;
+
 
 import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity{
 
-    public static ForumService forumService;
+
 
     private EditText userName;
     private EditText userPassword;
