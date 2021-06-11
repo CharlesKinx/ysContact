@@ -3,6 +3,7 @@ package com.example.yscontact.model;
 import org.w3c.dom.Text;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ForumInfo implements Serializable {
@@ -10,14 +11,15 @@ public class ForumInfo implements Serializable {
     private UserInfo userInfo;
     private String title;
     private String content;
-    private List<CommentsInfo> commentsInfoList;
+    private ArrayList<CommentsInfo> commentsInfoList;
     private int comments = 0;
 
-    public List<CommentsInfo> getCommentsInfoList() {
+
+    public ArrayList<CommentsInfo> getCommentsInfoList() {
         return commentsInfoList;
     }
 
-    public void setCommentsInfoList(List<CommentsInfo> commentsInfoList) {
+    public void setCommentsInfoList(ArrayList<CommentsInfo> commentsInfoList) {
         this.commentsInfoList = commentsInfoList;
     }
 

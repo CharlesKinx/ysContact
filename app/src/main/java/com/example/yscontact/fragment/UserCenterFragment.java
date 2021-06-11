@@ -33,9 +33,10 @@ public class UserCenterFragment extends Fragment {
         myList = view.findViewById(R.id.my_list);
         changeInfo =view.findViewById(R.id.change_info);
         logout = view.findViewById(R.id.logout);
-
-        userName.setText(LoginActivity.userInfo.getUserName());
-        userPhone.setText(LoginActivity.userInfo.getUserPhone());
+        if(LoginActivity.userInfo !=null){
+            userName.setText(LoginActivity.userInfo.getUserName());
+            userPhone.setText(LoginActivity.userInfo.getUserPhone());
+        }
 
     }
 
@@ -44,7 +45,8 @@ public class UserCenterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_usercenter, container, false);
 
-       initView(view);
+        initView(view);
+
         myList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,10 +1,11 @@
 package com.example.yscontact.model;
 
-public class CommentsInfo {
-    private int commentInfoID;
+import java.io.Serializable;
+
+public class CommentsInfo implements Serializable {
+    private int commentInfoID = 0;
     private String comment;
-    private UserInfo user;
-    private ForumInfo forumInfo;
+    private String user;
 
     public int getCommentInfoID() {
         return commentInfoID;
@@ -22,19 +23,20 @@ public class CommentsInfo {
         this.comment = comment;
     }
 
-    public UserInfo getUser() {
+    public String getUser() {
         return user;
     }
 
-    public void setUser(UserInfo user) {
+    public void setUser(String user) {
         this.user = user;
     }
 
-    public ForumInfo getForumInfo() {
-        return forumInfo;
-    }
-
-    public void setForumInfo(ForumInfo forumInfo) {
-        this.forumInfo = forumInfo;
+    @Override
+    public String toString() {
+        return "CommentsInfo{" +
+                "commentInfoID=" + commentInfoID +
+                ", comment='" + comment + '\'' +
+                ", user='" + user + '\'' +
+                '}';
     }
 }

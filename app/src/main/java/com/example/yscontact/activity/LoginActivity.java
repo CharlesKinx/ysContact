@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.yscontact.R;
+import com.example.yscontact.model.CommentsInfo;
 import com.example.yscontact.model.ForumInfo;
 import com.example.yscontact.model.UserInfo;
 import com.example.yscontact.service.ForumService;
@@ -42,19 +43,24 @@ public class LoginActivity extends AppCompatActivity{
         login = findViewById(R.id.btn_login);
         register = findViewById(R.id.btn_register);
         forumInfoArrayList = getInitData();
-
     }
 
     private ArrayList<ForumInfo> getInitData(){
         ArrayList<ForumInfo> arrayList = new ArrayList<>();
         ForumInfo forumInfo = new ForumInfo();
         UserInfo userInfo = new UserInfo();
+        CommentsInfo commentsInfo = new CommentsInfo();
+        ArrayList<CommentsInfo> commentsInfos = new ArrayList<>();
         userInfo.setUserName("刘亦菲");
 
         forumInfo.setTitle("吴海董最帅！");
         forumInfo.setContent("吴海董最帅！不接受反驳");
         forumInfo.setComments(555);
         forumInfo.setUserInfo(userInfo);
+        commentsInfo.setComment("说得对！");
+        commentsInfo.setUser("刘亦菲");
+        commentsInfos.add(commentsInfo);
+        forumInfo.setCommentsInfoList(commentsInfos);
 
         arrayList.add(forumInfo);
 
@@ -66,6 +72,7 @@ public class LoginActivity extends AppCompatActivity{
         forumInfo.setContent("韩康泽最丑！不接受反驳");
         forumInfo.setComments(999);
         forumInfo.setUserInfo(userInfo1);
+        forumInfo.setCommentsInfoList(commentsInfos);
         arrayList.add(forumInfo);
 
         return arrayList;
@@ -104,7 +111,6 @@ public class LoginActivity extends AppCompatActivity{
                 }else{
                     Toast.makeText(LoginActivity.this,"密码不正确！",Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 

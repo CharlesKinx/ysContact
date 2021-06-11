@@ -8,18 +8,21 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.yscontact.R;
+import com.example.yscontact.model.CommentsInfo;
 import com.example.yscontact.model.ForumInfo;
+
+import java.util.ArrayList;
 
 public class ForumCommentAdapter extends BaseAdapter {
 
+    private ArrayList<CommentsInfo> commentsInfoList;
     private TextView userName;
     private TextView commentContent;
     private Context mContext;
-    private ForumInfo forumInfo;
 
-    public ForumCommentAdapter(Context context,ForumInfo forumInfo){
+    public ForumCommentAdapter(Context context,ArrayList<CommentsInfo> commentsInfoList){
         this.mContext =context;
-        this.forumInfo = forumInfo;
+        this.commentsInfoList = commentsInfoList;
     }
 
     private void initView(View view){
@@ -29,7 +32,12 @@ public class ForumCommentAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return forumInfo.getCommentsInfoList().size();
+        if(commentsInfoList ==null){
+            return  0;
+        }else{
+            return commentsInfoList.size();
+        }
+
     }
 
     @Override
@@ -45,10 +53,10 @@ public class ForumCommentAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        View view = inflater.inflate(R.layout.items,null);
+        View view = inflater.inflate(R.layout.item_comment,null);
         initView(view);
-        userName.setText(forumInfo.getCommentsInfoList().get(position).getUser().getUserName());
-        commentContent.setText(forumInfo.getCommentsInfoList().get(position).getComment());
+        userName.setText(commentsInfoList.get(position).getUser());
+        commentContent.setText(commentsInfoList.get(position).getComment());
         return view;
     }
 }
