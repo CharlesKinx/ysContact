@@ -45,8 +45,20 @@ public class ForumContentActivity extends AppCompatActivity {
         editComment = findViewById(R.id.et_comment);
         publishComment = findViewById(R.id.btn_publish_comment);
         commentsInfo = new CommentsInfo();
-        commentsInfoArrayList = new ArrayList<>();
-        forumCommentAdapter = new ForumCommentAdapter(getApplicationContext(),forumInfo.getCommentsInfoList());
+
+    }
+
+
+    private ArrayList<CommentsInfo> getData(ForumInfo forumInfo){
+        ArrayList<CommentsInfo> commentsInfos = new ArrayList<>();
+
+        for(CommentsInfo commentsInfo : LoginActivity.commentsInfoArrayList){
+            if(commentsInfo.getForumID() == forumInfo.getForumID()){
+                commentsInfos.add(commentsInfo);
+            }
+        }
+        return commentsInfos;
+
     }
 
     @Override
@@ -56,12 +68,16 @@ public class ForumContentActivity extends AppCompatActivity {
         Intent intent = getIntent();
         forumInfo = (ForumInfo)intent.getSerializableExtra("forumInfo");
         initView(forumInfo);
+
         title.setText(forumInfo.getTitle());
         userName.setText(forumInfo.getUserInfo().getUserName());
         commentsNum.setText(String.valueOf(forumInfo.getComments()));
         content.setText(forumInfo.getContent());
 
+        commentsInfoArrayList = getData(forumInfo);
+        forumCommentAdapter = new ForumCommentAdapter(getApplicationContext(),commentsInfoArrayList);
         listView.setAdapter(forumCommentAdapter);
+
         publishComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,8 +87,9 @@ public class ForumContentActivity extends AppCompatActivity {
                 }else{
                     commentsInfo.setComment(comment);
                     commentsInfo.setUser(LoginActivity.userInfo.getUserName());
+                    commentsInfo.setForumID(forumInfo.getForumID());
+                    LoginActivity.commentsInfoArrayList.add(commentsInfo);
                     commentsInfoArrayList.add(commentsInfo);
-                    forumInfo.setCommentsInfoList(commentsInfoArrayList);
                     forumCommentAdapter.notifyDataSetChanged();
                 }
             }

@@ -4,8 +4,17 @@ import java.io.Serializable;
 
 public class CommentsInfo implements Serializable {
     private int commentInfoID = 0;
+    private int forumID;
     private String comment;
     private String user;
+
+    public int getForumID() {
+        return forumID;
+    }
+
+    public void setForumID(int forumID) {
+        this.forumID = forumID;
+    }
 
     public int getCommentInfoID() {
         return commentInfoID;

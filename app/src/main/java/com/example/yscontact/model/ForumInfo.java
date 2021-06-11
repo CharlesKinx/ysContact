@@ -7,21 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ForumInfo implements Serializable {
-    private int forumID;
+    private int forumID=0;
     private UserInfo userInfo;
     private String title;
     private String content;
-    private ArrayList<CommentsInfo> commentsInfoList;
+
     private int comments = 0;
 
 
-    public ArrayList<CommentsInfo> getCommentsInfoList() {
-        return commentsInfoList;
-    }
-
-    public void setCommentsInfoList(ArrayList<CommentsInfo> commentsInfoList) {
-        this.commentsInfoList = commentsInfoList;
-    }
 
     public int getForumID() {
         return forumID;
@@ -64,15 +57,4 @@ public class ForumInfo implements Serializable {
         this.comments = comments;
     }
 
-    @Override
-    public String toString() {
-        return "ForumInfo{" +
-                "forumID=" + forumID +
-                ", userInfo=" + userInfo +
-                ", title='" + title + '\'' +
-                ", content=" + content +
-                ", commentsInfoList=" + commentsInfoList +
-                ", comments=" + comments +
-                '}';
-    }
 }

@@ -29,6 +29,7 @@ public class LoginActivity extends AppCompatActivity{
 
     public static UserInfo userInfo;
     public static ArrayList<ForumInfo> forumInfoArrayList;
+    public static ArrayList<CommentsInfo> commentsInfoArrayList;
 
     private static final int REGISTER_REQUEST = 1;
     private static final int REGISTER_RESULT = 2;
@@ -42,6 +43,8 @@ public class LoginActivity extends AppCompatActivity{
         userPassword = findViewById(R.id.et_login_psw);
         login = findViewById(R.id.btn_login);
         register = findViewById(R.id.btn_register);
+        commentsInfoArrayList = new ArrayList<>();
+
         forumInfoArrayList = getInitData();
     }
 
@@ -50,18 +53,18 @@ public class LoginActivity extends AppCompatActivity{
         ForumInfo forumInfo = new ForumInfo();
         UserInfo userInfo = new UserInfo();
         CommentsInfo commentsInfo = new CommentsInfo();
-        ArrayList<CommentsInfo> commentsInfos = new ArrayList<>();
+
         userInfo.setUserName("刘亦菲");
 
         forumInfo.setTitle("吴海董最帅！");
         forumInfo.setContent("吴海董最帅！不接受反驳");
         forumInfo.setComments(555);
         forumInfo.setUserInfo(userInfo);
+        forumInfo.setForumID(1);
         commentsInfo.setComment("说得对！");
         commentsInfo.setUser("刘亦菲");
-        commentsInfos.add(commentsInfo);
-        forumInfo.setCommentsInfoList(commentsInfos);
-
+        commentsInfo.setForumID(forumInfo.getForumID());
+        commentsInfoArrayList.add(commentsInfo);
         arrayList.add(forumInfo);
 
         forumInfo = new ForumInfo();
@@ -71,8 +74,10 @@ public class LoginActivity extends AppCompatActivity{
         forumInfo.setTitle("韩康泽爱女装");
         forumInfo.setContent("韩康泽最丑！不接受反驳");
         forumInfo.setComments(999);
+        forumInfo.setForumID(2);
         forumInfo.setUserInfo(userInfo1);
-        forumInfo.setCommentsInfoList(commentsInfos);
+        commentsInfo.setForumID(forumInfo.getForumID());
+        commentsInfoArrayList.add(commentsInfo);
         arrayList.add(forumInfo);
 
         return arrayList;
