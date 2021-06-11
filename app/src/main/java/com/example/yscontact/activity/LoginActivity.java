@@ -36,13 +36,39 @@ public class LoginActivity extends AppCompatActivity{
     /**
      * 初始化组件
      */
-    void initComponent(){
+    private void initComponent(){
         userName = findViewById(R.id.et_login_user_name);
         userPassword = findViewById(R.id.et_login_psw);
         login = findViewById(R.id.btn_login);
         register = findViewById(R.id.btn_register);
-        forumInfoArrayList = new ArrayList<>();
+        forumInfoArrayList = getInitData();
 
+    }
+
+    private ArrayList<ForumInfo> getInitData(){
+        ArrayList<ForumInfo> arrayList = new ArrayList<>();
+        ForumInfo forumInfo = new ForumInfo();
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUserName("刘亦菲");
+
+        forumInfo.setTitle("吴海董最帅！");
+        forumInfo.setContent("吴海董最帅！不接受反驳");
+        forumInfo.setComments(555);
+        forumInfo.setUserInfo(userInfo);
+
+        arrayList.add(forumInfo);
+
+        forumInfo = new ForumInfo();
+        UserInfo userInfo1 = new UserInfo();
+        userInfo1.setUserName("吴海董");
+
+        forumInfo.setTitle("韩康泽爱女装");
+        forumInfo.setContent("韩康泽最丑！不接受反驳");
+        forumInfo.setComments(999);
+        forumInfo.setUserInfo(userInfo1);
+        arrayList.add(forumInfo);
+
+        return arrayList;
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
