@@ -1,6 +1,9 @@
 package com.example.yscontact.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +19,7 @@ import androidx.annotation.Nullable;
 import com.example.yscontact.R;
 import com.example.yscontact.activity.HomePageActivity;
 import com.example.yscontact.activity.LoginActivity;
+import com.example.yscontact.adapter.ForumAdapter;
 import com.example.yscontact.model.ForumInfo;
 
 import java.util.HashMap;
@@ -27,7 +31,7 @@ public class PublishForumFragment extends Fragment {
     private TextView forumTitle;
     private TextView forumContent;
     private ForumInfo forumInfo;
-    private ListView listView;
+    private ForumAdapter adapter;
 
     private void initView(View view){
         publishForum = view.findViewById(R.id.btn_publish);
@@ -43,6 +47,7 @@ public class PublishForumFragment extends Fragment {
         initView(view);
 
         publishForum.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
             @Override
             public void onClick(View v) {
                 String title = forumTitle.getText().toString();
@@ -55,13 +60,12 @@ public class PublishForumFragment extends Fragment {
                     forumInfo.setTitle(title);
                     forumInfo.setContent(content);
                     forumInfo.setUserInfo(LoginActivity.userInfo);
-                    HomePageActivity.forumInfoArrayList.add(forumInfo);
-                    ForumListFragment.adapter.notifyDataSetChanged();
+                    LoginActivity.forumInfoArrayList.add(forumInfo);
+
                     Intent intent = new Intent(getActivity(),HomePageActivity.class);
                     startActivity(intent);
+
                 }
-
-
             }
         });
         return view;

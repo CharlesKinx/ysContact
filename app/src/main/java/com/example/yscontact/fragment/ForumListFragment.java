@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import com.example.yscontact.R;
 import com.example.yscontact.activity.ForumContentActivity;
 import com.example.yscontact.activity.HomePageActivity;
+import com.example.yscontact.activity.LoginActivity;
 import com.example.yscontact.adapter.ForumAdapter;
 import com.example.yscontact.model.ForumInfo;
 
@@ -30,31 +31,16 @@ public class ForumListFragment extends ListFragment {
     private ListView listView;
     public static ArrayList<Map<String,Object>> mapArrayList;
     private ArrayList<ForumInfo> forumInfoArrayList;
-    public static ForumAdapter adapter;
+    private ForumAdapter adapter;
 
 
-
-    private ArrayList<Map<String,Object>> getDate() {
-        ArrayList<Map<String,Object>> arrayList = new ArrayList<>();
-        forumInfoArrayList = HomePageActivity.forumInfoArrayList;
-        for(ForumInfo forumInfo : forumInfoArrayList){
-            Map<String,Object> map = new HashMap<>();
-            map.put("forumTitle",forumInfo.getTitle());
-            map.put("userName",forumInfo.getUserInfo().getUserName());
-            map.put("commentNum",forumInfo.getComments());
-            arrayList.add(map);
-        }
-
-        return arrayList;
-
-    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_forumlist, container, false);
         listView = view.findViewById(android.R.id.list);
-        adapter = new ForumAdapter(getActivity());
+        adapter = new ForumAdapter(getActivity(),LoginActivity.forumInfoArrayList);
         listView.setAdapter(adapter);
         return view;
     }
@@ -62,7 +48,7 @@ public class ForumListFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        ForumInfo forumInfo= HomePageActivity.forumInfoArrayList.get(position);
+        ForumInfo forumInfo= LoginActivity.forumInfoArrayList.get(position);
         Intent intent = new Intent(getActivity(), ForumContentActivity.class);
         intent.putExtra("forumInfo",forumInfo);
         startActivity(intent);

@@ -24,27 +24,7 @@ public class HomePageActivity extends AppCompatActivity {
     private ForumListFragment forumListFragment;
     private PublishForumFragment publishForumFragment;
     private UserCenterFragment userCenterFragment;
-    public static ArrayList<ForumInfo> forumInfoArrayList;
 
-    private ArrayList<ForumInfo> getForumInfoArrayList(){
-        ArrayList<ForumInfo> forumInfos = new ArrayList<>();
-        ForumInfo forumInfo = new ForumInfo();
-        UserInfo user = new UserInfo();
-
-        user.setUserName("吴海董");
-        forumInfo.setTitle("测试");
-        forumInfo.setComments(5);
-        forumInfo.setUserInfo(user);
-        forumInfos.add(forumInfo);
-
-        forumInfo = new ForumInfo();
-        user.setUserName("刘亦菲");
-        forumInfo.setTitle("我爱吴海董");
-        forumInfo.setComments(999);
-        forumInfo.setUserInfo(user);
-        forumInfos.add(forumInfo);
-        return forumInfos;
-    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener=
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -96,8 +76,6 @@ public class HomePageActivity extends AppCompatActivity {
         forumListFragment = new ForumListFragment();
         publishForumFragment = new PublishForumFragment();
         userCenterFragment = new UserCenterFragment();
-
-        forumInfoArrayList = getForumInfoArrayList();
 
 
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();

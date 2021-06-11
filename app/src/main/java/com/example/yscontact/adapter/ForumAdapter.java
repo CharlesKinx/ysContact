@@ -9,6 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.yscontact.R;
 import com.example.yscontact.activity.HomePageActivity;
+import com.example.yscontact.activity.LoginActivity;
+import com.example.yscontact.model.ForumInfo;
+import com.example.yscontact.model.UserInfo;
+
+import java.util.ArrayList;
 
 
 public class ForumAdapter extends BaseAdapter {
@@ -17,29 +22,41 @@ public class ForumAdapter extends BaseAdapter {
     private TextView itemEtTitle;
     private TextView itemEtUserName;
     private TextView itemEtComments;
-
-
     private Context mContext;
+    private ArrayList<ForumInfo> forumInfoArrayList;
+
 
     private void initView(View view){
         itemEtTitle = view.findViewById(R.id.item_et_title);
         itemEtUserName = view.findViewById(R.id.item_et_name);
         itemEtComments = view.findViewById(R.id.item_comment_num);
     }
-    public ForumAdapter(Context context){
+    public ForumAdapter(Context context,ArrayList<ForumInfo> forumInfos){
         this.mContext = context;
-
+        this.forumInfoArrayList = forumInfos;
     }
+
+
 
 
     @Override
     public int getCount() {
-        return HomePageActivity.forumInfoArrayList.size();
+        if(forumInfoArrayList == null){
+            return 0;
+        }else{
+            return forumInfoArrayList.size();
+        }
+
     }
 
     @Override
     public Object getItem(int position) {
-        return HomePageActivity.forumInfoArrayList.get(position);
+        if(forumInfoArrayList == null){
+            return null;
+        }else{
+            return forumInfoArrayList.get(position);
+        }
+
     }
 
     @Override
@@ -52,9 +69,9 @@ public class ForumAdapter extends BaseAdapter {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View view = inflater.inflate(R.layout.items,null);
         initView(view);
-        itemEtTitle.setText(HomePageActivity.forumInfoArrayList.get(position).getTitle());
-        itemEtComments.setText(String.valueOf(HomePageActivity.forumInfoArrayList.get(position).getComments()));
-        itemEtUserName.setText(HomePageActivity.forumInfoArrayList.get(position).getUserInfo().getUserName());
+        itemEtTitle.setText(forumInfoArrayList.get(position).getTitle());
+        itemEtComments.setText(String.valueOf(forumInfoArrayList.get(position).getComments()));
+        itemEtUserName.setText(forumInfoArrayList.get(position).getUserInfo().getUserName());
         return view;
     }
 }

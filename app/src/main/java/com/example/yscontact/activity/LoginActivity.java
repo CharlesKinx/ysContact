@@ -11,8 +11,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.yscontact.R;
+import com.example.yscontact.model.ForumInfo;
 import com.example.yscontact.model.UserInfo;
 import com.example.yscontact.service.ForumService;
+
+import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity{
 
@@ -24,6 +27,7 @@ public class LoginActivity extends AppCompatActivity{
     private Button register;
 
     public static UserInfo userInfo;
+    public static ArrayList<ForumInfo> forumInfoArrayList;
 
     private static final int REGISTER_REQUEST = 1;
     private static final int REGISTER_RESULT = 2;
@@ -37,6 +41,7 @@ public class LoginActivity extends AppCompatActivity{
         userPassword = findViewById(R.id.et_login_psw);
         login = findViewById(R.id.btn_login);
         register = findViewById(R.id.btn_register);
+        forumInfoArrayList = new ArrayList<>();
 
     }
     @Override
