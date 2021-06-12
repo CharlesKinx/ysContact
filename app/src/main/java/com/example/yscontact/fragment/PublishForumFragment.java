@@ -62,6 +62,7 @@ public class PublishForumFragment extends Fragment {
                     SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     String datetime = tempDate.format(new java.util.Date());
                     forumInfo.setTitle(title);
+                    forumInfo.setForumID(LoginActivity.forumInfoArrayList.size()+1);
                     forumInfo.setTime(datetime);
                     forumInfo.setContent(content);
                     forumInfo.setUserInfo(LoginActivity.userInfo);

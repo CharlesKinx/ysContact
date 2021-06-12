@@ -13,15 +13,16 @@ import com.example.yscontact.model.ForumInfo;
 
 import java.util.ArrayList;
 
-public class MyForumListAdapter extends BaseAdapter {
+public class MyForumListAdapter extends BaseAdapter implements View.OnClickListener {
 
     private ArrayList<ForumInfo> forumInfoArrayList;
     private Context mContext;
-
+    private InnerItemOnclickListener mListener;
     private Button delete;
     private TextView myForumTitle;
     private TextView userName;
     private TextView time;
+
 
     public MyForumListAdapter(Context context,ArrayList<ForumInfo> arrayList){
         this.mContext = context;
@@ -63,9 +64,28 @@ public class MyForumListAdapter extends BaseAdapter {
         View view = inflater.inflate(R.layout.item_forum,null);
         initView(view);
 
+        delete.setOnClickListener(this);
+        delete.setTag(position);
         myForumTitle.setText(forumInfoArrayList.get(position).getTitle());
         time.setText(forumInfoArrayList.get(position).getTime());
         userName.setText(forumInfoArrayList.get(position).getUserInfo().getUserName());
+
         return view;
     }
+
+
+    public interface InnerItemOnclickListener {
+        void itemClick(View v);
+    }
+
+    public void setOnInnerItemOnClickListener(InnerItemOnclickListener listener){
+        this.mListener=listener;
+    }
+
+    @Override
+    public void onClick(View v) {
+        mListener.itemClick(v);
+    }
+
+
 }
