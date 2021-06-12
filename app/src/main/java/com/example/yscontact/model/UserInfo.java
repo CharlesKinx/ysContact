@@ -3,11 +3,18 @@ package com.example.yscontact.model;
 import java.io.Serializable;
 
 public class UserInfo implements Serializable {
+    private int id=0;
     private String userName;
     private String userPassword;
     private String userPhone;
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getUserName() {
         return userName;

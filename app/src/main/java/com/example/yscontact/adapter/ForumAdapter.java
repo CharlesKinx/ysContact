@@ -31,6 +31,7 @@ public class ForumAdapter extends BaseAdapter {
         itemEtUserName = view.findViewById(R.id.item_et_name);
         itemEtComments = view.findViewById(R.id.item_comment_num);
     }
+
     public  ForumAdapter(Context context,ArrayList<ForumInfo> forumInfos){
         this.mContext = context;
         this.forumInfoArrayList = forumInfos;
