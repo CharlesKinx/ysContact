@@ -11,10 +11,17 @@ public class ForumInfo implements Serializable {
     private UserInfo userInfo;
     private String title;
     private String content;
-
+    private String time;
     private int comments = 0;
 
 
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 
     public int getForumID() {
         return forumID;

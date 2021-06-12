@@ -16,6 +16,7 @@ import com.example.yscontact.model.ForumInfo;
 import com.example.yscontact.model.UserInfo;
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity{
@@ -53,6 +54,8 @@ public class LoginActivity extends AppCompatActivity{
         ForumInfo forumInfo = new ForumInfo();
         UserInfo userInfo = new UserInfo();
         CommentsInfo commentsInfo = new CommentsInfo();
+        SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String datetime = tempDate.format(new java.util.Date());
 
         userInfo.setUserName("刘亦菲");
 
@@ -60,7 +63,7 @@ public class LoginActivity extends AppCompatActivity{
         forumInfo.setContent("吴海董最帅！不接受反驳");
         forumInfo.setUserInfo(userInfo);
         forumInfo.setForumID(1);
-        forumInfo.setComments(1);
+        forumInfo.setTime(datetime);
         commentsInfo.setComment("说得对！");
         commentsInfo.setUser("刘亦菲");
         commentsInfo.setForumID(forumInfo.getForumID());
@@ -75,6 +78,7 @@ public class LoginActivity extends AppCompatActivity{
         forumInfo.setContent("韩康泽最丑！不接受反驳");
         forumInfo.setForumID(2);
         forumInfo.setUserInfo(userInfo1);
+        forumInfo.setTime(datetime);
         arrayList.add(forumInfo);
 
         return arrayList;

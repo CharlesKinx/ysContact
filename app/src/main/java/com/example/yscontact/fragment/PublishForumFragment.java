@@ -22,6 +22,7 @@ import com.example.yscontact.activity.LoginActivity;
 import com.example.yscontact.adapter.ForumAdapter;
 import com.example.yscontact.model.ForumInfo;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -58,7 +59,10 @@ public class PublishForumFragment extends Fragment {
                 }else if(content.equals("")){
                     Toast.makeText(getActivity(),"内容不能为空!",Toast.LENGTH_SHORT).show();
                 }else{
+                    SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    String datetime = tempDate.format(new java.util.Date());
                     forumInfo.setTitle(title);
+                    forumInfo.setTime(datetime);
                     forumInfo.setContent(content);
                     forumInfo.setUserInfo(LoginActivity.userInfo);
                     LoginActivity.forumInfoArrayList.add(forumInfo);

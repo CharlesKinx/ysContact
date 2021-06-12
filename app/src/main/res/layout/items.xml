@@ -65,18 +65,12 @@
             <TextView
                 android:textSize="15sp"
                 android:textColor="@color/black"
-                android:layout_width="180dp"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/item_et_name"
                 />
 
-            <TextView
-                android:id="@+id/item_comments"
-                android:text="评论个数："
-                android:textSize="15sp"
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
+
             <TextView
                 android:textColor="@color/black"
                 android:layout_width="match_parent"

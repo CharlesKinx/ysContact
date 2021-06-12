@@ -70,7 +70,7 @@ public class ForumAdapter extends BaseAdapter {
         View view = inflater.inflate(R.layout.items,null);
         initView(view);
         itemEtTitle.setText(forumInfoArrayList.get(position).getTitle());
-        itemEtComments.setText(String.valueOf(forumInfoArrayList.get(position).getComments()));
+        itemEtComments.setText(String.valueOf(forumInfoArrayList.get(position).getTime()));
         itemEtUserName.setText(forumInfoArrayList.get(position).getUserInfo().getUserName());
         return view;
     }
