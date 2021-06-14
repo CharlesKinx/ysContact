@@ -18,9 +18,12 @@ import com.example.yscontact.model.ForumInfo;
 import java.util.ArrayList;
 
 public class MyForumListActivity extends AppCompatActivity implements MyForumListAdapter.InnerItemOnclickListener, AdapterView.OnItemClickListener {
+
     private ListView listView;
     private ArrayList<ForumInfo> arrayList;
     private MyForumListAdapter myForumListAdapter;
+
+
     private ArrayList<ForumInfo> getData(){
         ArrayList<ForumInfo> arrayList = new ArrayList<>();
         for(int i=0;i<LoginActivity.forumInfoArrayList.size();i++){
