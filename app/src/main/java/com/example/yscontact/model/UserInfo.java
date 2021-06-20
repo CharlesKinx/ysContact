@@ -3,7 +3,7 @@ package com.example.yscontact.model;
 import java.io.Serializable;
 
 public class UserInfo implements Serializable {
-    private int id=0;
+    private int id;
     private String account;
     private String password;
     private String telephone;

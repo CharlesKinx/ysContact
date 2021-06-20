@@ -10,14 +10,29 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.yscontact.R;
 import com.example.yscontact.model.CommentsInfo;
 import com.example.yscontact.model.ForumInfo;
+import com.example.yscontact.model.Result;
 import com.example.yscontact.model.UserInfo;
+import com.google.gson.Gson;
 
 
+import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity{
 
@@ -108,18 +123,52 @@ public class LoginActivity extends AppCompatActivity{
                     Toast.makeText(LoginActivity.this,"用户名不能为空！",Toast.LENGTH_SHORT).show();
                 }else if(password.equals("")){
                     Toast.makeText(LoginActivity.this,"密码不能为空！",Toast.LENGTH_SHORT).show();
-                }else if(userInfo == null){
-                    Toast.makeText(LoginActivity.this,"没有该用户信息",Toast.LENGTH_SHORT).show();
+                }else {
 
-                }else if(name.equals(userInfo.getAccount())&&password.equals(userInfo.getPassword())){
-                    Intent intent = new Intent(LoginActivity.this,HomePageActivity.class);
-                    startActivity(intent);
-                }else{
-                    Toast.makeText(LoginActivity.this,"密码不正确！",Toast.LENGTH_SHORT).show();
+                    OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                            .readTimeout(120, TimeUnit.SECONDS)
+                            .connectTimeout(120, TimeUnit.SECONDS)
+                            .writeTimeout(120, TimeUnit.SECONDS)
+                            .build();
+
+                    UserInfo student = new UserInfo();
+
+                    student.setAccount(name);
+                    student.setPassword(password);
+
+                    Gson gson = new Gson();
+                    String json = gson.toJson(student);
+
+                    Request request = new Request.Builder()
+                            .url("http://10.0.116.6:8081/user/login")
+                            .post(RequestBody.create(MediaType.parse("application/json"),json))
+                            .build();
+
+                    Call call = okHttpClient.newCall(request);
+                    call.enqueue(new Callback() {
+                        @Override
+                        public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                            System.out.println(e);
+                        }
+
+                        @Override
+                        public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                            String res = response.body().string();
+                            Result resultInfo = JSONObject.parseObject(res,Result.class);
+                            if(resultInfo.getMsg().equals("登录成功")){
+                                userInfo  =resultInfo.getUser();
+                                Intent intent = new Intent(LoginActivity.this, HomePageActivity.class);
+                                startActivity(intent);
+                            }else{
+                                runOnUiThread(()->{
+                                    Toast.makeText(LoginActivity.this,resultInfo.getMsg(),Toast.LENGTH_SHORT).show();
+                                });
+                            }
+                        }
+                    });
                 }
             }
         });
-
     }
 
     @Override

@@ -71,7 +71,6 @@ public class MyForumListActivity extends AppCompatActivity implements MyForumLis
         }
 
     }
-
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
