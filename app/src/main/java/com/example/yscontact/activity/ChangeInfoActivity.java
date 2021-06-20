@@ -10,7 +10,24 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.yscontact.R;
+import com.example.yscontact.model.Result;
+import com.example.yscontact.model.UserInfo;
+import com.google.gson.Gson;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class ChangeInfoActivity extends AppCompatActivity {
 
@@ -70,12 +87,53 @@ public class ChangeInfoActivity extends AppCompatActivity {
                     Toast.makeText(ChangeInfoActivity.this,"两次密码不一致！",Toast.LENGTH_SHORT).show();
                 }else{
 
-                    LoginActivity.userInfo.setAccount(name);
-                    LoginActivity.userInfo.setTelephone(phone);
-                    LoginActivity.userInfo.setPassword(password);
+                    OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                            .readTimeout(120, TimeUnit.SECONDS)
+                            .connectTimeout(120, TimeUnit.SECONDS)
+                            .writeTimeout(120, TimeUnit.SECONDS)
+                            .build();
+                    UserInfo user = new UserInfo();
+                    user.setId(LoginActivity.userInfo.getId());
+                    user.setAccount(name);
+                    user.setPassword(password);
+                    user.setTelephone(phone);
+                    Gson gson = new Gson();
 
-                    Intent intent = new Intent(ChangeInfoActivity.this, HomePageActivity.class);
-                    startActivity(intent);
+                    String json = gson.toJson(user);
+
+                    Request request = new Request.Builder()
+                            .url("http://10.0.116.6:8081/user/change")
+                            .post(RequestBody.create(MediaType.parse("application/json"),json))
+                            .build();
+
+                    Call call = okHttpClient.newCall(request);
+                    call.enqueue(new Callback() {
+                        @Override
+                        public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                            System.out.println("请求失败！");
+                            System.out.println(e);
+                        }
+
+                        @Override
+                        public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+
+                            String res = response.body().string();
+                            Result resultInfo = JSONObject.parseObject(res,Result.class);
+                            if(resultInfo.getMsg().equals("修改成功")){
+                                LoginActivity.userInfo.setPassword(resultInfo.getUser().getPassword());
+                                LoginActivity.userInfo.setTelephone(resultInfo.getUser().getTelephone());
+                                LoginActivity.userInfo.setAccount(resultInfo.getUser().getAccount());
+                                LoginActivity.userInfo.setId(resultInfo.getUser().getId());
+                                Intent intent = new Intent(ChangeInfoActivity.this,HomePageActivity.class);
+                                startActivity(intent);
+
+                            }else{
+                                runOnUiThread(()->{
+                                    Toast.makeText(ChangeInfoActivity.this,resultInfo.getMsg(),Toast.LENGTH_SHORT).show();
+                                });
+                            }
+                        }
+                    });
                 }
             }
         });
