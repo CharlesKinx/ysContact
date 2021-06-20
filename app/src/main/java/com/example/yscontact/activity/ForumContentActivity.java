@@ -18,7 +18,6 @@ import com.example.yscontact.model.CommentsInfo;
 import com.example.yscontact.model.ForumInfo;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ForumContentActivity extends AppCompatActivity {
 
@@ -88,7 +87,7 @@ public class ForumContentActivity extends AppCompatActivity {
 
         initView(forumInfo);
         title.setText(forumInfo.getTitle());
-        userName.setText(forumInfo.getUserInfo().getUserName());
+        userName.setText(forumInfo.getUserInfo().getAccount());
         commentsNum.setText(String.valueOf(forumInfo.getComments()));
         content.setText(forumInfo.getContent());
 
@@ -105,7 +104,7 @@ public class ForumContentActivity extends AppCompatActivity {
                 }else{
                     CommentsInfo commentsInfo = new CommentsInfo();
                     commentsInfo.setComment(comment);
-                    commentsInfo.setUser(LoginActivity.userInfo.getUserName());
+                    commentsInfo.setUser(LoginActivity.userInfo.getAccount());
                     commentsInfo.setForumID(forumInfo.getForumID());
                     LoginActivity.commentsInfoArrayList.add(commentsInfo);
                     editComment.setText("");

@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 public class UserInfo implements Serializable {
     private int id=0;
-    private String userName;
-    private String userPassword;
-    private String userPhone;
+    private String account;
+    private String password;
+    private String telephone;
 
     public int getId() {
         return id;
@@ -16,36 +16,36 @@ public class UserInfo implements Serializable {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getAccount() {
+        return account;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setAccount(String account) {
+        this.account = account;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getUserPhone() {
-        return userPhone;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setUserPhone(String userPhone) {
-        this.userPhone = userPhone;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     @Override
     public String toString() {
         return "UserInfo{" +
-                "userName='" + userName + '\'' +
-                ", userPassword='" + userPassword + '\'' +
-                ", userPhone='" + userPhone + '\'' +
+                "userName='" + account + '\'' +
+                ", userPassword='" + password + '\'' +
+                ", userPhone='" + telephone + '\'' +
                 '}';
     }
 }

@@ -1,6 +1,5 @@
 package com.example.yscontact.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,8 +8,24 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.yscontact.R;
+import com.example.yscontact.model.Result;
 import com.example.yscontact.model.UserInfo;
+import com.google.gson.Gson;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -69,16 +84,48 @@ public class RegisterActivity extends AppCompatActivity {
                 }else if(!password.equals(password1)){
                     Toast.makeText(RegisterActivity.this,"两次密码不一致！",Toast.LENGTH_SHORT).show();
                 }else{
-                    userInfo.setUserName(name);
-                    userInfo.setUserPassword(password);
-                    userInfo.setUserPhone(phone);
-                    Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
-                    intent.putExtra("userInfo",userInfo);
-                    setResult(REGISTER_RESULT,intent);
-                    finish();
+
+                    userInfo.setAccount(name);
+                    userInfo.setPassword(password);
+                    userInfo.setTelephone(phone);
+
+                    OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                            .readTimeout(120, TimeUnit.SECONDS)
+                            .connectTimeout(120, TimeUnit.SECONDS)
+                            .writeTimeout(120, TimeUnit.SECONDS)
+                            .build();
+
+                    Gson gson = new Gson();
+                    String json = gson.toJson(userInfo);
+
+                    Request request = new Request.Builder()
+                            .url("http://10.0.116.6:8081/user/register")
+                            .post(RequestBody.create(MediaType.parse("application/json"),json))
+                            .build();
+
+                    Call call = okHttpClient.newCall(request);
+                    call.enqueue(new Callback() {
+                        @Override
+                        public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                            System.out.println("请求失败！");
+                            System.out.println(e);
+                        }
+
+                        @Override
+                        public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+
+                            String res = response.body().string();
+                            Result resultInfo = JSONObject.parseObject(res,Result.class);
+                            if(resultInfo.getMsg().equals("注册成功！")){
+                                finish();
+                            }else{
+                                runOnUiThread(()->{
+                                    Toast.makeText(RegisterActivity.this,resultInfo.getMsg(),Toast.LENGTH_SHORT).show();
+                                });
+                            }
+                        }
+                    });
                 }
-
-
             }
         });
 

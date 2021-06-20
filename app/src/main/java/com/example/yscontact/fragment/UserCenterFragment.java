@@ -8,11 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentManager;
 
 import com.example.yscontact.R;
 import com.example.yscontact.activity.ChangeInfoActivity;
@@ -34,8 +31,8 @@ public class UserCenterFragment extends Fragment {
         changeInfo =view.findViewById(R.id.change_info);
         logout = view.findViewById(R.id.logout);
         if(LoginActivity.userInfo !=null){
-            userName.setText(LoginActivity.userInfo.getUserName());
-            userPhone.setText(LoginActivity.userInfo.getUserPhone());
+            userName.setText(LoginActivity.userInfo.getAccount());
+            userPhone.setText(LoginActivity.userInfo.getTelephone());
         }
 
     }

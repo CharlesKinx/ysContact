@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity{
         SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String datetime = tempDate.format(new java.util.Date());
 
-        userInfo.setUserName("刘亦菲");
+        userInfo.setAccount("刘亦菲");
 
         forumInfo.setTitle("吴海董最帅！");
         forumInfo.setContent("吴海董最帅！不接受反驳");
@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity{
 
         forumInfo = new ForumInfo();
         UserInfo userInfo1 = new UserInfo();
-        userInfo1.setUserName("吴海董");
+        userInfo1.setAccount("吴海董");
 
         forumInfo.setTitle("韩康泽爱女装");
         forumInfo.setContent("韩康泽最丑！不接受反驳");
@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
-                startActivityForResult(intent,REGISTER_REQUEST);
+                startActivity(intent);
             }
         });
 
@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity{
                 }else if(userInfo == null){
                     Toast.makeText(LoginActivity.this,"没有该用户信息",Toast.LENGTH_SHORT).show();
 
-                }else if(name.equals(userInfo.getUserName())&&password.equals(userInfo.getUserPassword())){
+                }else if(name.equals(userInfo.getAccount())&&password.equals(userInfo.getPassword())){
                     Intent intent = new Intent(LoginActivity.this,HomePageActivity.class);
                     startActivity(intent);
                 }else{

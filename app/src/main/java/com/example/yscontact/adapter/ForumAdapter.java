@@ -5,13 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.yscontact.R;
-import com.example.yscontact.activity.HomePageActivity;
-import com.example.yscontact.activity.LoginActivity;
 import com.example.yscontact.model.ForumInfo;
-import com.example.yscontact.model.UserInfo;
 
 import java.util.ArrayList;
 
@@ -72,7 +68,7 @@ public class ForumAdapter extends BaseAdapter {
         initView(view);
         itemEtTitle.setText(forumInfoArrayList.get(position).getTitle());
         itemEtComments.setText(String.valueOf(forumInfoArrayList.get(position).getTime()));
-        itemEtUserName.setText(forumInfoArrayList.get(position).getUserInfo().getUserName());
+        itemEtUserName.setText(forumInfoArrayList.get(position).getUserInfo().getAccount());
         return view;
     }
 }

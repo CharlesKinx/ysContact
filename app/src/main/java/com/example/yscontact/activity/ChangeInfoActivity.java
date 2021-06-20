@@ -11,8 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.yscontact.R;
-import com.example.yscontact.fragment.UserCenterFragment;
-import com.example.yscontact.model.UserInfo;
 
 public class ChangeInfoActivity extends AppCompatActivity {
 
@@ -72,9 +70,9 @@ public class ChangeInfoActivity extends AppCompatActivity {
                     Toast.makeText(ChangeInfoActivity.this,"两次密码不一致！",Toast.LENGTH_SHORT).show();
                 }else{
 
-                    LoginActivity.userInfo.setUserName(name);
-                    LoginActivity.userInfo.setUserPhone(phone);
-                    LoginActivity.userInfo.setUserPassword(password);
+                    LoginActivity.userInfo.setAccount(name);
+                    LoginActivity.userInfo.setTelephone(phone);
+                    LoginActivity.userInfo.setPassword(password);
 
                     Intent intent = new Intent(ChangeInfoActivity.this, HomePageActivity.class);
                     startActivity(intent);

@@ -68,7 +68,7 @@ public class MyForumListAdapter extends BaseAdapter implements View.OnClickListe
         delete.setTag(position);
         myForumTitle.setText(forumInfoArrayList.get(position).getTitle());
         time.setText(forumInfoArrayList.get(position).getTime());
-        userName.setText(forumInfoArrayList.get(position).getUserInfo().getUserName());
+        userName.setText(forumInfoArrayList.get(position).getUserInfo().getAccount());
 
         return view;
     }
